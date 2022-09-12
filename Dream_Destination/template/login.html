@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+</head>
+<body bgcolor="#28a745">
+    <center>
+        <div style="background-color:white;width:400px;height:300px;margin-top:100px;border-radius:10px">
+            <form method="post" action="{% url 'loginpage' %}">
+            {%csrf_token%}
+            <h2 style="padding-top:20px">login</h2>
+            <font color="red">{{msg}}</font>
+            <input name="uname" type="text" placeholder="Username" required style="width:240px;height:30px;margin:10px;padding-left:10px"><br>
+            <input name="pname" type="password" placeholder="Password" required style="width:240px;height:30px;margin:10px;padding-left:10px"><br><br>
+            <button type="submit" style="width:250px;height:35px;background-color:#28a745;border:none">submit</button>
+            </form>
+        </div>
+    </center>
+    
+</body>
+</html>

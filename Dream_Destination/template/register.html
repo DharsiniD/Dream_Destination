@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTER</title>
+</head>
+<body background="{% static 'seaview.jpg' %}">
+    <center>
+        <div style="background-color:rgba(255, 255, 255, 0.384);width:400px;height:500px;margin-top:50px;border-radius:10px">
+            <h2 style="padding-top:20px">Register</h2>
+            <font color="red">{{msg}}</font>
+            <form method="post" action="{% url 'registerpage' %}">
+            {%csrf_token%} 
+            
+            <input name="username" type="text" placeholder="Username" required style="width:240px;height:30px;margin:10px;padding-left:10px"><br>
+            <input name="firstname" type="text" placeholder="First Name" required style="width:240px;height:30px;margin:10px;padding-left:10px"><br>
+            <input name="lastname" type="text" placeholder="Last Name" required style="width:240px;height:30px;margin:10px;padding-left:10px"><br>
+            <input name="email" type="text" placeholder="E-mail" required style="width:240px;height:30px;margin:10px;padding-left:10px"><br>
+            <input name="passname" type="password" placeholder="Password" required style="width:240px;height:30px;margin:10px;padding-left:10px"><br>
+            <input name="namep" type="password" placeholder="Password" required style="width:240px;height:30px;margin:10px;padding-left:10px"><br><br>
+            <button type="submit" style="width:250px;height:35px;background-color:#28a745;border:none">submit</button>
+            </form>
+        </div>
+    </center>
+    
+</body>
+</html>
