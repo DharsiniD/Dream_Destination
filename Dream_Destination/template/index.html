@@ -282,13 +282,13 @@
             </div>
             <div class="row">
 
-                {% for i in 'abcde' %}
+                {% for i in as %}
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="{% static 'img/destination-6.jpg' %}" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Indonesia</h5>
-                            <span>100 Cities</span>
+                        <img class="img-fluid" src="{{i.img.url}}" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="product?id={{i.id}}">
+                            <h5 class="text-white">{{i.name}}</h5>
+                            <span>{{i.cost}}</span>
                         </a>
                     </div>
                 </div>

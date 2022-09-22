@@ -3,10 +3,15 @@ from http.client import HTTPResponse
 from tkinter.messagebox import NO
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import product
+from product.models import TravellPlace
 from django.contrib.auth.models import auth,User
+
+
 def index(request):
-    return render(request,"index.html")
+    data=TravellPlace.objects.all()
+    return render(request,"index.html",{'as':data})
+
+   
     
 def login(request):
     if request.method =='POST':
@@ -50,27 +55,7 @@ def register(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
-    
 
-
-p1=product()
-p1.name="spring"
-p1.price=100
-p1.description="asdfghjklzxcvbnmqwertyuiop"
-p2=product()
-p2.name="sweets"
-p2.price=150
-p2.description="qwertyiopcvbnmcvbnmqwer"
-p3=product()
-p3.name="polish"
-p3.price=120
-p3.description="ghjklxcvbnmmertyuisdfgasqw"
-p4=product()
-p4.name="galaxy"
-p4.price=300
-p4.description="ljhgfdsapoiuytrewqzxcvbnm"
-
-pro=[p1,p2,p3,p4]
 
 def samp(request):
     return render(request,"test.html",{'a':pro}) 

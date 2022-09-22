@@ -15,16 +15,15 @@ Including another URLconf
 """
 from atexit import register
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from home import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index,name="homepage"),
-    path('test/',views.samp),
-    path('login1',views.login,name="loginpage"),
-    path('register1',views.register,name="registerpage"),
-
+    path('',include("home.urls"),name="homepage"),
+    path('product/',include("product.urls"))
    
-    path('logout',views.logout)
-]
+   
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
