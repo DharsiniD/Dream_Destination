@@ -11,7 +11,7 @@ def index(request):
     data=TravellPlace.objects.all()
     return render(request,"index.html",{'as':data})
 
-   
+  
     
 def login(request):
     if request.method =='POST':

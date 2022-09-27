@@ -10,7 +10,7 @@ class TravellPlace(models.Model):
     def __str__(self):
         return self.name
 
-class comments(models.Models):
+class comments(models.Model):
     place=models.ForeignKey(TravellPlace,related_name="commands",on_delete=models.CASCADE)
     name=models.CharField(max_length=200)
     cmt=models.TextField()

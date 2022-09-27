@@ -33,7 +33,7 @@
             padding:10px ;
             border-radius:10px;
             height:500px;
-            overflow: auto;
+            overflow:auto;
 
         }
         .massage_box p{
@@ -228,18 +228,13 @@
                         <h2>Comments</h2>
                         
                         <div class="massage_box">
-                            <p>Dharsini <b>good place<small>01/09/2022</small></b></p>
-                            <p>Dharsini <b>good place<small>12/09/2022</small></b></p>
-                            <p>Dharsini <b>good place<small>23/09/2022</small></b></p>
-                            <p>Dharsini <b>good place<small>06/09/2022</small></b></p>
-                            <p>Dharsini <b>good place<small>10/09/2022</small></b></p>
-                            <p>Dharsini <b>good place<small>18/09/2022</small></b></p>
-                            <p>Dharsini <b>good place<small>18/09/2022</small></b></p>
-                            <p>Dharsini <b>good place<small>18/09/2022</small></b></p>
-                            <p>Dharsini <b>good place<small>18/09/2022</small></b></p>
-                            <p>Dharsini <b>good place<small>18/09/2022</small></b></p>
-                            <p>Dharsini <b>good place<small>18/09/2022</small></b></p>
-                      
+                          
+                            
+                           
+                            {% for c in cmt %}
+                            <p>{{c.name}} <b>{{c.cmt}}<small>{{c.date}}</small></b></p>
+                            {% endfor %} 
+                            
                         </div>
                         
                   
@@ -251,18 +246,26 @@
                     <!-- Comment Form Start -->
                     <div class="bg-white mb-3" style="padding: 30px;">
                         <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Leave a comment</h4>
-                        <form>
+                        <form action="{% url 'comments' %}">
+                            {% if user.is_authenticated %}
                             
     
                             <div class="form-group">
                                 <label for="message">Message *</label>
-                                <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                                <textarea name='msg' id="message" cols="30" rows="5" class="form-control"></textarea>
+                                <input type="hidden" name="pro_id" value="{{p.id}}">
+                            
+                                <input type="hidden" name="user" value="{{user.username}}">
                             </div>
+                         
+                            
                             <div class="form-group mb-0">
                                 <input type="submit" value="Leave a comment"
                                     class="btn btn-primary font-weight-semi-bold py-2 px-3">
+                                    
                             </div>
-                        </form>
+                            {% endif %}
+                            </form>
                     </div>
                     <!-- Comment Form End -->  
                 </div>
