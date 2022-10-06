@@ -8,7 +8,11 @@ from django.contrib.auth.models import auth,User
 
 
 def index(request):
-    data=TravellPlace.objects.all()
+    if request.method=="POST":
+        val=request.POST["search_box"]
+        data=TravellPlace.objects.filter(name__istartswith=val)
+    else:
+        data=TravellPlace.objects.all()
     return render(request,"index.html",{'as':data})
 
   
