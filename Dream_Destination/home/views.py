@@ -1,5 +1,7 @@
 
+from ctypes.wintypes import MSG
 from http.client import HTTPResponse
+from socket import MSG_BCAST
 from tkinter.messagebox import NO
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
@@ -8,12 +10,18 @@ from django.contrib.auth.models import auth,User
 
 
 def index(request):
+    #cookies_view
+    if 'pro_name' in request.COOKIES:
+        msg=request.COOKIES['pro_name']
+    else:
+        msg=" What Say Our Clients"
+    #searching
     if request.method=="POST":
         val=request.POST["search_box"]
         data=TravellPlace.objects.filter(name__istartswith=val)
     else:
         data=TravellPlace.objects.all()
-    return render(request,"index.html",{'as':data})
+    return render(request,"index.html",{'as':data,'msg':msg})
 
   
     
@@ -24,7 +32,9 @@ def login(request):
         user=auth.authenticate(username=uname,password=pname)
         if user is not None:
             auth.login(request,user)    
-            return redirect('/')
+            res=redirect('/')
+            res.set_cookie('name',uname)
+            return res
         else:
             return render(request,"login.html",{'msg':'invalide username and password'})
     else:        

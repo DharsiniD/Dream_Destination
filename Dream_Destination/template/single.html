@@ -222,7 +222,11 @@
                         </div>
                     </div>
                     <!-- Blog Detail End -->
-    
+                    <div class="bg-white" style="padding :30px; margin-bottom: 30px;">
+                        {% for k in place2 %}
+                        <img src="{{k.img.url}}" width="150px" height="150px" style="border-radius:50%;margin:7px;">
+                        {% endfor %}
+                    </div>
                     <!-- Comment List Start -->
                     <div class="bg-white" style="padding: 30px; margin-bottom: 30px;">
                         <h2>Comments</h2>
